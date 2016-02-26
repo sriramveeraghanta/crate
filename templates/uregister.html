@@ -1,0 +1,55 @@
+<div layout="row">
+
+    <div flex="25">
+
+    </div>
+    <div flex="50">
+
+      <md-toolbar>
+        <h2 class="md-toolbar-tools">
+          <span>Registration</span>
+        </h2>
+      </md-toolbar>
+      <form name="registrationForm" action="/register" method="POST">
+
+      <md-input-container class="md-block">
+        <label>FIrst Name</label>
+        <input required name="firstname" ng-model="firstname">
+        <div ng-messages="registrationForm.firstname.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Last Name</label>
+        <input required name="lastname" ng-model="lastname">
+        <div ng-messages="registrationForm.lastname.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>User Name</label>
+        <input required name="username" ng-model="username">
+        <div ng-messages="registrationForm.username.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <md-input-container class="md-block">
+        <label>Password</label>
+        <input required name="password" ng-model="password" type="password">
+        <div ng-messages="registrationForm.password.$error">
+          <div ng-message="required">This is required.</div>
+        </div>
+      </md-input-container>
+
+      <button class="md-button md-raised md-primary" ng-href="/hello">Submit</md-button>
+      </form>
+
+    </div>
+    <div flex="25">
+      
+    </div>
+
+  </div>

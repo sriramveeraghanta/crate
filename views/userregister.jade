@@ -1,0 +1,39 @@
+extends layout
+
+block content
+			div(layout='row')
+				div(flex='25')
+				div(flex='50')
+					md-toolbar
+						h2.md-toolbar-tools
+							span User Registration
+					form(name='registrationForm', action='/userregister', method='POST')
+						md-input-container.md-block
+							label FIrst Name
+							input(required='', name='firstname', ng-model='firstname')
+							div(ng-messages='registrationForm.firstname.$error')
+								div(ng-message='required') This is required.
+						md-input-container.md-block
+							label Last Name
+							input(required='', name='lastname', ng-model='lastname')
+							div(ng-messages='registrationForm.lastname.$error')
+								div(ng-message='required') This is required.
+						md-input-container.md-block
+							label User Name
+							input(required='', name='username', ng-model='username')
+							div(ng-messages='registrationForm.username.$error')
+								div(ng-message='required') This is required.
+						md-input-container.md-block
+							label Password
+							input(required='', name='password', ng-model='password', type='password')
+							div(ng-messages='registrationForm.password.$error')
+								div(ng-message='required') This is required.
+						button.md-button.md-raised.md-primary(type="submit")
+							| Submit
+						button.md-button.md-raised.md-accent(type="cancle")
+							| Cancle
+
+					if(error)
+						h5 Note: #{message}
+							
+				div(flex='25')
