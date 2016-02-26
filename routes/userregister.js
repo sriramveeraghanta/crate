@@ -17,6 +17,7 @@ router.post('/', function(req, res) {
     	isUser: true,
     }), req.body.password, function(err, account) {
         if (err) {
+            console.log(err);
             return res.render('userregister', { error : err , message: err.message});
         }
         passport.authenticate('local')(req, res, function () {

@@ -6,7 +6,7 @@ var Account = new Schema({
     firstname: {type: String, required: true, unique: false},
 	lastname: {type: String, required: true, unique: false},
 	username: {type: String, required: true, unique: true},
-	password: {type: String, required: true},
+	password: {type: String},
 	isAdmin: {type: Boolean, required: true, unique: false},
 	isModerator: {type: Boolean, required: true, unique: false},
 	isUser: {type: Boolean, required: true, unique: false},
