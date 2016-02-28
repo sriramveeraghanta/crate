@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  if(isModerator)
+    .container()
+      md-toolbar
+        .md-toolbar-tools
+          h1
+            span Crate
+          span(flex='')
+          p Welcome, #{username}
+          md-button.md-raised(href="/logout") Logout
+      .row
+        md-button.md-raised.md-wran(ng-click="showAdvanced($event)") Upload Files
+      
+      div(layout='row', layout-padding='', layout-wrap='', style='padding-bottom: 20px;', ng-cloak='')
+        div(flex='70')
+          md-whiteframe.md-whiteframe-5dp(flex='33', layout='', layout-align='center center')
+            span(align='center')
+              h1  My Cargo
+              
+        div(flex='30')
+          md-whiteframe.md-whiteframe-5dp(flex='33', layout='',style='padding: 10px;')
+            span(align='center')
+              h1 Upload Crate
+              form(action='/home/upload', name='fileupload', method='POST', enctype="multipart/form-data", align='left', class='dropzone')
+                div.fallback
+                  input(name='file',type='file')
+                //input#fileInput(type='file')
+                //md-button.md-raised.md-warn(type='submit') Upload Files
+              
+
+  if(isUser)
+    .container
+      md-toolbar
+        .md-toolbar-tools
+          h1
+            span Crate
+          span(flex='')
+          p Welcome, #{username}
+          md-button.md-raised(href="/logout") Logout
+      .row
+      

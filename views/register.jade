@@ -1,19 +1,22 @@
 extends layout
 
 block content
-	div(layout='column', layout-fill='')
-		md-toolbar
-			.md-toolbar-tools
-				h1
-					span(layout-marin="20px") Registration
-		div(layout='row', layout-padding='', layout-wrap='', style='padding-bottom: 20px;', ng-cloak='')
-			div(flex='50')
-				md-whiteframe.md-whiteframe-5dp(flex='33', layout='', layout-align='center center')
-					span(align='center')
-						h1  Register as a User
-						md-button.md-primary.md-raised(ng-href='/userregister') Register
-			div(flex='50')
-				md-whiteframe.md-whiteframe-5dp(flex='33', layout='', layout-align='center center')
-					span(align='center')
-						h1 Register as a Moderator
-						md-button.md-primary.md-raised(ng-href='/moderatorregister') Register
+  div(layout='column', layout-fill='')
+    md-toolbar
+      .md-toolbar-tools
+        h1
+          span(layout-marin="20px") Registration
+        span(flex='')
+        md-button.md-raised(href="/login") Login
+              
+    div(layout='row', layout-padding='', layout-wrap='', style='padding-bottom: 20px;', ng-cloak='')
+      div(flex='50')
+        md-whiteframe.md-whiteframe-5dp(flex='33', layout='', layout-align='center center')
+          span(align='center')
+            h1  Register as a User
+            md-button.md-primary.md-raised(ng-href='/userregister') Register
+      div(flex='50')
+        md-whiteframe.md-whiteframe-5dp(flex='33', layout='', layout-align='center center')
+          span(align='center')
+            h1 Register as a Moderator
+            md-button.md-primary.md-raised(ng-href='/moderatorregister') Register

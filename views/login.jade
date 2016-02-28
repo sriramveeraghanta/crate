@@ -1,12 +1,11 @@
 extends layout
 
 block content
-			div(layout='row')
-				div(flex='25')
-				div(flex='50')
+			div(layout='row', layout-align="center")
+				div(flex='40')
 					md-toolbar
 						h2.md-toolbar-tools
-							span User Registration
+							span Login
 					form(name='registrationForm', action='/login', method='POST')
 						
 						md-input-container.md-block
@@ -20,12 +19,12 @@ block content
 							input(required='', name='password', ng-model='password', type='password')
 							div(ng-messages='registrationForm.password.$error')
 								div(ng-message='required') This is required.
-						button.md-button.md-raised.md-primary(type="submit")
-							| Submit
-						button.md-button.md-raised.md-accent(type="cancle")
-							| Cancle
+						div(style="display:flex")
+							button.md-button.md-raised.md-primary(type="submit")
+								| Submit
+							md-button.md-button.md-raised.md-accent(href="/")
+								| Cancle
 
-					if(error)
-						h5 Note: #{message}
-							
-				div(flex='25')
+					if(message)
+						h3 Error: #{message}
+
