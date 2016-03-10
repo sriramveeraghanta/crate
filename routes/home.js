@@ -23,12 +23,17 @@ router.get('/',function(req,res,next){
 })
 
 router.get('/:username',function(req,res,next){
-	var myuser = req.params.username;
-	Account.find({username: myuser}, function(err,person){
-		console.log(person[0]);
+	if(req.user){
+		var myuser = req.params.username;
+		Account.find({username: myuser}, function(err,person){
+		//var json = person[0].user=req.user;
+		//console.log(json);
 		res.render('home',person[0]);
-	});
-	//res.send('Something went Wrong');
+	});	
+	}
+	else{
+		res.send('You Are not Logged in');
+	}
 });
 
 router.post('/upload', upload.single('file') , function(req,res){

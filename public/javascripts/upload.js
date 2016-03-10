@@ -1,12 +1,11 @@
-Dropzone.options.uploadWidget = {
+Dropzone.options.fileupload = {
   paramName: 'file',
-  maxFilesize: 500, // MB
+  maxFilesize: 10000, // MB
   maxFiles: 1,
-  dictDefaultMessage: 'Drag an image here to upload, or click to select one',
+  dictDefaultMessage: 'drop files here',
   headers: {
     'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
   },
-  acceptedFiles: 'image/*',
   init: function() {
     this.on('success', function( file, resp ){
       console.log( file );
