@@ -1,29 +1,20 @@
-Dropzone.options.fileupload = {
-  paramName: 'file',
-  maxFilesize: 10000, // MB
-  maxFiles: 1,
-  dictDefaultMessage: 'drop files here',
-  headers: {
-    'x-csrf-token': document.querySelectorAll('meta[name=csrf-token]')[0].getAttributeNode('content').value,
+Dropzone.autoDiscover = false;
+var errors = false;
+var myDropzone = new Dropzone("#fileupload" , {
+  paramName: "file", // The name that will be used to transfer the file
+  maxFilesize: 100000, // MB
+
+  error: function(file, errorMessage) {
+    errors = true;
+    console.log('error')
   },
-  init: function() {
-    this.on('success', function( file, resp ){
-      console.log( file );
-      console.log( resp );
-    });
-    this.on('thumbnail', function(file) {
-      if ( file.width < 640 || file.height < 480 ) {
-        file.rejectDimensions();
-      }
-      else {
-        file.acceptDimensions();
-      }
-    });
+  queuecomplete: function() {
+    console.log('queuecomplete');
+    alert('Successflly Uplaoded');
   },
-  accept: function(file, done) {
-    file.acceptDimensions = done;
-    file.rejectDimensions = function() {
-      done('The image must be at least 640 x 480px')
-    };
-  }
-};
+
+  dictDefaultMessage :
+  '<span class="bigger-150 bolder"><i class="ace-icon fa fa-caret-right red"></i> Drop files</span> to upload \
+  <span class="smaller-80 grey">(or click)</span> <br /> \
+  <i class="upload-icon ace-icon fa fa-cloud-upload blue fa-3x"></i>',
+});

@@ -1,38 +1,50 @@
 extends layout
 
 block content
-			div(layout='row', layout-align='center')
-				div(flex='40')
-					md-toolbar
-						h2.md-toolbar-tools
-							span Moderator Registration
-					form(name='registrationForm', action='/moderatorregister', method='POST')
-						md-input-container.md-block
-							label FIrst Name
-							input(required='', name='firstname', ng-model='firstname')
-							div(ng-messages='registrationForm.firstname.$error')
-								div(ng-message='required') This is required.
-						md-input-container.md-block
-							label Last Name
-							input(required='', name='lastname', ng-model='lastname')
-							div(ng-messages='registrationForm.lastname.$error')
-								div(ng-message='required') This is required.
-						md-input-container.md-block
-							label User Name
-							input(required='', name='username', ng-model='username')
-							div(ng-messages='registrationForm.username.$error')
-								div(ng-message='required') This is required.
-						md-input-container.md-block
-							label Password
-							input(required='', name='password', ng-model='password', type='password')
-							div(ng-messages='registrationForm.password.$error')
-								div(ng-message='required') This is required.
-						div(style="display:flex")
-							button.md-button.md-raised.md-primary(type="submit")
-								| Submit
-							md-button.md-button.md-raised.md-accent(href="/register")
-								| Cancle
+    .container-fluid
+      #navbar-div.page-header
+        nav#navbar-nav.navbar
+          .container-fluid
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+      .row.row-centered
+        .col-xs-6.col-md-4.col-centered
+          .page-header
+            h2 Please Register
+          form#registerForm(method='POST')
+            .form-group
+              label First Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='First Name', name='firstname')
+            .form-group
+              label Last Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='Last Name', name='lastname')
+            .form-group
+              label User Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='User Name', name='username')
+            .form-group
+              label Password
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-star
+                input.form-control(type='password', placeholder='Password', name='password')
+            .form-group
+              label Registration Key
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-flash
+                input.form-control(type='password', placeholder='Registration Key', name='regkey')
 
-					if(error)
-						h5 Note: #{message}
-							
+            button.btn.btn-primary.btn-block(type='submit')
+              span Register
+          .login-form-footer
+            | Already have an account 
+            a(href='/login') Login here

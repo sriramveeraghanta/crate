@@ -1,22 +1,20 @@
 extends layout
 
 block content
-  div(layout='column', layout-fill='')
-    md-toolbar
-      .md-toolbar-tools
-        h1
-          span(layout-marin="20px") Registration
-        span(flex='')
-        md-button.md-raised(href="/login") Login
-              
-    div(layout='row', layout-padding='', layout-wrap='', style='padding-bottom: 20px;', ng-cloak='')
-      div(flex='50')
-        md-whiteframe.md-whiteframe-5dp(flex='33', layout='', layout-align='center center')
-          span(align='center')
-            h1  Register as a User
-            md-button.md-primary.md-raised(ng-href='/userregister') Register
-      div(flex='50')
-        md-whiteframe.md-whiteframe-5dp(flex='33', layout='', layout-align='center center')
-          span(align='center')
-            h1 Register as a Moderator
-            md-button.md-primary.md-raised(ng-href='/moderatorregister') Register
+    .container-fluid
+      #navbar-div.page-header
+        nav#navbar-nav.navbar
+          .container-fluid
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav.navbar-right
+                li
+                  a(href='/login') Login
+      .row.row-centered
+        .col-xs-6.col-md-4.col-centered.content-center
+          h2.mycenter Register as User
+          a.btn.btn-primary(href='/userregister', role='button')  Register 
+        .col-xs-6.col-md-4.col-centered.content-center
+          h2 Register as Moderator
+          a.btn.btn-primary(href='/moderatorregister', role='button')  Register 

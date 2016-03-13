@@ -5,7 +5,7 @@ Dropzone.options.fileupload = {
         console.log("File progress", progress);
       });
       this.on('success', function( file, resp ){
-      console.log("success")
+      	console.log(resp);
     });
-    },
-  }
+  },
+}

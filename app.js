@@ -17,6 +17,7 @@ var moderatorregister = require('./routes/moderatorregister');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
 var home = require('./routes/home');
+var upload = require('./routes/upload');
 
 var app = express();
 
@@ -54,6 +55,7 @@ app.use('/moderatorregister',moderatorregister)
 app.use('/login',login);
 app.use('/logout',logout);
 app.use('/home',home);
+app.use('/upload',upload);
 
 // passport config
 var Account = require('./models/account');

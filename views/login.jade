@@ -1,30 +1,38 @@
 extends layout
 
 block content
-			div(layout='row', layout-align="center")
-				div(flex='40')
-					md-toolbar
-						h2.md-toolbar-tools
-							span Login
-					form(name='registrationForm', action='/login', method='POST')
-						
-						md-input-container.md-block
-							label User Name
-							input(required='', name='username', ng-model='username')
-							div(ng-messages='registrationForm.username.$error')
-								div(ng-message='required') This is required.
-
-						md-input-container.md-block
-							label Password
-							input(required='', name='password', ng-model='password', type='password')
-							div(ng-messages='registrationForm.password.$error')
-								div(ng-message='required') This is required.
-						div(style="display:flex")
-							button.md-button.md-raised.md-primary(type="submit")
-								| Submit
-							md-button.md-button.md-raised.md-accent(href="/")
-								| Cancle
-
-					if(message)
-						h3 Error: #{message}
-
+    .container-fluid
+      #navbar-div.page-header
+        nav#navbar-nav.navbar
+          .container-fluid
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+      .row.row-centered
+        .col-xs-6.col-md-4.col-centered
+          .page-header
+            h2 Please Login
+          form#loginForm(action="/login", method='POST')
+            .form-group
+              label User Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='Username', name="username")
+            .form-group
+              label Password
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-star
+                input.form-control(type='password', placeholder='Password', name="password")
+            .checkbox
+              label
+                input(type='checkbox')
+                |  Remember me
+            button.btn.btn-primary.btn-block(type='submit')
+              span.glyphicon.glyphicon-lock
+              span Login
+          .login-form-footer
+            | Don't have an account 
+            a(href='/register') Register here
+          if(message)
+            p#errormsg Error: #{message}

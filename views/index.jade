@@ -1,11 +1,16 @@
 extends layout
 
 block content
-    .container
-      md-toolbar
-        .md-toolbar-tools
-          h1
-            span Crate
-          span(flex='')
-          md-button.md-raised(href="/login") Login
-          md-button.md-raised(href="/register") Register
+		.container-fluid
+			#navbar-div.page-header
+				nav#navbar-nav.navbar
+					.container-fluid
+						.navbar-header
+							a#navbar-title.navbar-brand(href='/') Crate
+						#bs-example-navbar-collapse-1.collapse.navbar-collapse
+							ul.nav.navbar-nav.navbar-right
+								li
+									a(href='/register') Register
+								li
+									a(href='/login') Login
+

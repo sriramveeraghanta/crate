@@ -1,0 +1,15 @@
+extends layout
+
+block content
+
+    .container-fluid
+      #navbar-div.page-header
+        nav#navbar-nav.navbar
+          .container-fluid
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+      .row.row-centered
+        .col-md-6.col-centered
+          .page-header
+            h2 Upload
+          form(action='/upload', method='POST' id='fileupload' ,name='fileupload', enctype="multipart/form-data", class="dropzone")
