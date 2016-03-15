@@ -19,11 +19,20 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 router.get('/',function(req,res,next){
-  res.render('upload');
+  if(req.user){
+    var myuser = req.user.username;
+    Account.find({username: myuser}, function(err,person){
+      res.render('upload',person[0]);
+    });
+  }
+  else{
+    res.send('You Are not Logged in');
+  }
 })
 
 router.post('/', upload.single('file') , function(req,res){
-    console.log(req.file.path)
+    console.log(req.file.originalname);
+    console.log(req.file.path);
     res.send('success');
 });
 

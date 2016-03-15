@@ -2,6 +2,7 @@ extends layout
 
 block content
 
+  if(isModerator)
     .container-fluid
       #navbar-div.page-header
         nav#navbar-nav.navbar
@@ -13,3 +14,6 @@ block content
           .page-header
             h2 Upload
           form(action='/upload', method='POST' id='fileupload' ,name='fileupload', enctype="multipart/form-data", class="dropzone")
+  if(isUser)
+    p You cannot Upload files 
+      a(href="/") Go Back
