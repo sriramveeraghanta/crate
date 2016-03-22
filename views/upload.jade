@@ -17,3 +17,19 @@ block content
   if(isUser)
     p You cannot Upload files 
       a(href="/") Go Back
+
+  if(isAdmin)
+    .container-fluid
+      #navbar-div.page-header
+        nav#navbar-nav.navbar
+          .container-fluid
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+      .row.row-centered
+        .col-md-6.col-centered
+          .page-header
+            h2 Upload Crate
+            form(action='/upload', method='POST' id='fileupload' ,name='fileupload', enctype="multipart/form-data", class="dropzone")
+
+
+      
