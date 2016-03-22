@@ -13,6 +13,8 @@ router.post('/', function(req, res, next) {
       return next(err); // will generate a 500 error
     }
     // Generate a JSON response reflecting authentication status
+    //console.log(user.isAdmin);
+
     if (! user) {
     	return res.render('login', { message : 'Username or Password is incorrect' } );
     }
@@ -20,7 +22,7 @@ router.post('/', function(req, res, next) {
       if(err){
         return next(err);
       }
-      return res.redirect('/home/'+user.username);
+      return res.redirect('/cargo/');
     });
   })(req, res, next);
 });

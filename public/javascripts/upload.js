@@ -2,8 +2,7 @@ Dropzone.autoDiscover = false;
 var errors = false;
 var myDropzone = new Dropzone("#fileupload" , {
   paramName: "file", // The name that will be used to transfer the file
-  maxFilesize: 100000,
-  maxThumbnailFilesize: 100000 // MB
+  maxFilesize: 100000, // MB
 
   error: function(file, errorMessage) {
     errors = true;

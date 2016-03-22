@@ -1,0 +1,52 @@
+extends layout
+
+block content
+    .container-fluid
+      #navbar-div.page-header
+        nav#navbar-nav.navbar
+          .container-fluid
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+      .row.row-centered
+        .col-xs-6.col-md-4.col-centered
+          .page-header
+            h2 Admin Registration
+          form#registerForm(method='POST',action='adminregister')
+            .form-group
+              label First Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='First Name', name='firstname')
+            .form-group
+              label Last Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='Last Name', name='lastname')
+            .form-group
+              label User Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='User Name', name='username')
+            .form-group
+              label Password
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-star
+                input.form-control(type='password', placeholder='Password', name='password')
+            .form-group
+              label Admin Key
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-flash
+                input.form-control(type='password', placeholder='Registration Key', name='regkey')
+
+            button.btn.btn-primary.btn-block(type='submit')
+              span Register
+          .login-form-footer
+            | Already have an account 
+            a(href='/login') Login here
+            if(message)
+              p#errormsg Error: #{message}

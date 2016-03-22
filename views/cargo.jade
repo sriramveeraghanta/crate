@@ -1,0 +1,348 @@
+extends layout
+
+block content
+    
+    if(isModerator)
+      .container-fluid
+        nav.navbar
+          .container-fluid
+            // Brand and toggle get grouped for better mobile display
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+            // Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/upload') Upload File
+              ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    | Welcome, #{username}  
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/logout') Log Out
+        .row.row-centered
+          h1 Cargo
+          ol.breadcrumb
+            each dir in dirs
+              li
+                a #{dir}
+
+          .row.girds-row-centered
+            each fileinfo in filesinfo
+                .col-md-4.col-xs-6.thumb.imggrids
+                  //a.mythumbnail.gridimg(href="/"+fileinfo.filePath)
+                  if(fileinfo.fileExt=='.jpeg')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.jpg')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.png')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.pdf')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/pdflogo.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.iso')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/iso.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.zip')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/zip.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.psd')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/psd-file.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/folder.png")
+                      p #{fileinfo.fileName}
+                  else
+                    div.mythumbnail.gridimg2
+                      h2 #{fileinfo.fileExt}
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  
+
+    if(isUser)
+        .container-fluid
+        nav.navbar
+          .container-fluid
+            // Brand and toggle get grouped for better mobile display
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+            // Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    | Welcome, #{username} 
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/logout') Log Out
+        .row.row-centered
+          h1 Cargo
+          ol.breadcrumb
+            each dir in dirs
+              li
+                a #{dir}
+
+          .row.girds-row-centered
+            each fileinfo in filesinfo
+                .col-md-4.col-xs-6.thumb.imggrids
+                  //a.mythumbnail.gridimg(href="/"+fileinfo.filePath)
+                  if(fileinfo.fileExt=='.jpeg')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.jpg')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.png')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.pdf')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/pdflogo.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.iso')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/iso.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.zip')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/zip.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.psd')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/psd-file.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/folder.png")
+                      p #{fileinfo.fileName}
+                  else
+                    div.mythumbnail.gridimg2
+                      h2 #{fileinfo.fileExt}
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+
+    if(isAdmin)
+      .container-fluid
+        nav.navbar
+          .container-fluid
+            // Brand and toggle get grouped for better mobile display
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+            // Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/upload') Upload File
+                li
+                  a(href='#') Uploads
+                li
+                  a(href='#') Downloads
+              ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    | Welcome, #{username}  
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/logout') Log Out
+        .row.row-centered
+          h1 Cargo
+          ol.breadcrumb
+            each dir in dirs
+              li
+                a #{dir}
+
+          .row.girds-row-centered
+            each fileinfo in filesinfo
+                .col-md-4.col-xs-6.thumb.imggrids
+                  //a.mythumbnail.gridimg(href="/"+fileinfo.filePath)
+                  if(fileinfo.fileExt=='.jpeg')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.jpg')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.png')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/image-tumbnail.jpg")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.pdf')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/pdflogo.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.iso')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/iso.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.zip')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/zip.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='.psd')
+                    img.img-responsive.mythumbnail.gridimg(src="/images/psd-file.png")
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  else if(fileinfo.fileExt=='')
+                    a(href='/'+fileinfo.filePath)
+                      img.img-responsive.mythumbnail.gridimg(src="/images/folder.png")
+                      p #{fileinfo.fileName}
+                  else
+                    div.mythumbnail.gridimg2
+                      h2 #{fileinfo.fileExt}
+                    .dropdown
+                      a.dropdown-toggle#text(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                        | #{fileinfo.fileName}  
+                        span.caret
+                      ul.dropdown-menu
+                        li
+                          a(href="http://localhost:3000/download/"+fileinfo.filePath) Download
+                  
+
+
+

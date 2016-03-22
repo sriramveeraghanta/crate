@@ -1,0 +1,38 @@
+extends layout
+
+block content
+    .container-fluid
+      #navbar-div.page-header
+        nav#navbar-nav.navbar
+          .container-fluid
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+      .row.row-centered
+        .col-xs-6.col-md-4.col-centered
+          .page-header
+            h2 Admin Login
+          form#loginForm(action="/admin", method='POST')
+            .form-group
+              label User Name
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-user
+                input.form-control(type='text', placeholder='Username', name="username")
+            .form-group
+              label Password
+              .input-group
+                span.input-group-addon
+                  span.glyphicon.glyphicon-star
+                input.form-control(type='password', placeholder='Password', name="password")
+            .checkbox
+              label
+                input(type='checkbox')
+                |  Remember me
+            button.btn.btn-primary.btn-block(type='submit')
+              span.glyphicon.glyphicon-lock
+              span Login
+          .login-form-footer
+            | Don't have an account 
+            a(href='/register') Register here
+          if(message)
+            p#errormsg Error: #{message}

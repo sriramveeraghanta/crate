@@ -16,8 +16,11 @@ var userregister = require('./routes/userregister');
 var moderatorregister = require('./routes/moderatorregister');
 var login = require('./routes/login');
 var logout = require('./routes/logout');
-var home = require('./routes/home');
+var cargo = require('./routes/cargo');
 var upload = require('./routes/upload');
+var download = require('./routes/download');
+var admin = require('./routes/admin');
+var adminregister = require('./routes/adminregister');
 
 var app = express();
 
@@ -37,6 +40,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/cargo', express.static('cargo'));
 
 app.use(require('express-session')({
   secret: 'hello nodejs app',
@@ -54,8 +58,11 @@ app.use('/userregister',userregister);
 app.use('/moderatorregister',moderatorregister)
 app.use('/login',login);
 app.use('/logout',logout);
-app.use('/home',home);
+app.use('/cargo',cargo);
 app.use('/upload',upload);
+app.use('/download',download);
+app.use('/admin',admin);
+app.use('/adminregister',adminregister);
 
 // passport config
 var Account = require('./models/account');

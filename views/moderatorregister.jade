@@ -11,7 +11,7 @@ block content
         .col-xs-6.col-md-4.col-centered
           .page-header
             h2 Please Register
-          form#registerForm(method='POST')
+          form#registerForm(method='POST', action="/moderatorregister")
             .form-group
               label First Name
               .input-group
@@ -48,3 +48,5 @@ block content
           .login-form-footer
             | Already have an account 
             a(href='/login') Login here
+            if(message)
+              p#errormsg Error: #{message}

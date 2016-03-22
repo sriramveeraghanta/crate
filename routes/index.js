@@ -5,7 +5,7 @@ var Account = require('../models/account');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	if(req.user){
-		res.redirect('/home/'+req.user.username);
+		res.redirect('/cargo/');
 	}
 	else{
 		res.render('index', { user : req.user});
