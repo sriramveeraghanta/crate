@@ -23,6 +23,8 @@ var upload = require('./routes/upload');
 var download = require('./routes/download');
 var admin = require('./routes/admin');
 var adminregister = require('./routes/adminregister');
+var uploadslist = require('./routes/uploadslist');
+var downloadslist = require('./routes/downloadslist')
 
 var app = express();
 
@@ -67,6 +69,8 @@ app.use('/upload',upload);
 app.use('/download',download);
 app.use('/admin',admin);
 app.use('/adminregister',adminregister);
+app.use('/uploadslist',uploadslist);
+app.use('/downloadslist',downloadslist);
 
 // passport config
 var Account = require('./models/account');

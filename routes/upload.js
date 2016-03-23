@@ -29,7 +29,7 @@ var storage = multer.diskStorage({
 				cb(null, file.originalname);
 
 				var upload_data = {
-					userid: req.user.id,
+					username: req.user.username,
 					filename: file.originalname,
 					filepath: filepath,
 					datetime: getDatetime(),

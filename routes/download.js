@@ -13,26 +13,11 @@ router.get('/:file(*)',function(req,res,next){
 	if(req.isAuthenticated()){
 		var file = req.params.file;
 
-		var date = new Date();
-
-		var hour = date.getHours();
-		hour = (hour < 10 ? "0" : "") + hour;
-		var min  = date.getMinutes();
-		min = (min < 10 ? "0" : "") + min;
-		var sec  = date.getSeconds();
-		sec = (sec < 10 ? "0" : "") + sec;
-		var year = date.getFullYear();
-		var month = date.getMonth() + 1;
-		month = (month < 10 ? "0" : "") + month;
-		var day  = date.getDate();
-		day = (day < 10 ? "0" : "") + day;
-
-		var current_datetime = year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
-		
 		var download_data = {
-			uid: req.user.id,
+			username: req.user.username,
+			filename: path.basename(file),
 			filepath: file,
-			datetime: current_datetime,
+			datetime: getDatetime(),
 		};
 
 
@@ -51,5 +36,29 @@ router.get('/:file(*)',function(req,res,next){
 	}
 });
 
+function getDatetime(){
+	var date = new Date();
+
+	var hour = date.getHours();
+	hour = (hour < 10 ? "0" : "") + hour;
+
+	var min  = date.getMinutes();
+	min = (min < 10 ? "0" : "") + min;
+	
+	var sec  = date.getSeconds();
+	sec = (sec < 10 ? "0" : "") + sec;
+	
+	var year = date.getFullYear();
+	
+	var month = date.getMonth() + 1;
+	month = (month < 10 ? "0" : "") + month;
+	
+	var day  = date.getDate();
+	day = (day < 10 ? "0" : "") + day;
+
+	var current_datetime = year + ":" + month + ":" + day + ":" + hour + ":" + min + ":" + sec;
+
+	return current_datetime;
+}
 
 module.exports = router;
