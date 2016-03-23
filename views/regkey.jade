@@ -1,0 +1,40 @@
+extends layout
+
+block content
+    
+    if(isAdmin)
+      .container-fluid
+        nav.navbar
+          .container-fluid
+            // Brand and toggle get grouped for better mobile display
+            .navbar-header
+              a#navbar-title.navbar-brand(href='/') Crate
+            // Collect the nav links, forms, and other content for toggling
+            #bs-example-navbar-collapse-1.collapse.navbar-collapse
+              ul.nav.navbar-nav
+                li
+                  a(href='/upload') Upload File
+                li
+                  a(href='/uploadslist') Uploads
+                li
+                  a(href='/downloadslsit') Downloads
+                li
+                  a(href='/regkey') Reg Key Generation
+              ul.nav.navbar-nav.navbar-right
+                li.dropdown
+                  a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    | Welcome, #{username}  
+                    span.caret
+                  ul.dropdown-menu
+                    li
+                      a(href='/logout') Log Out
+        .row.row-centered
+          h1 Registration Key Generation
+          .col-md-8.col-centered
+            input#keyvalue
+            button.btn.btn-danger#regkeygen(type='button') Generate Key
+
+
+
+
+

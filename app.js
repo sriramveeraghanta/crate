@@ -24,7 +24,8 @@ var download = require('./routes/download');
 var admin = require('./routes/admin');
 var adminregister = require('./routes/adminregister');
 var uploadslist = require('./routes/uploadslist');
-var downloadslist = require('./routes/downloadslist')
+var downloadslist = require('./routes/downloadslist');
+var regkey = require('./routes/regkey');
 
 var app = express();
 
@@ -71,6 +72,7 @@ app.use('/admin',admin);
 app.use('/adminregister',adminregister);
 app.use('/uploadslist',uploadslist);
 app.use('/downloadslist',downloadslist);
+app.use('/regkey',regkey);
 
 // passport config
 var Account = require('./models/account');

@@ -23,4 +23,36 @@ $(document).ready(function() {
             }
         }
     });
+
+    $('#regkeygen').click(function(){
+        alert('hello');
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/regkey",
+            data:{
+                "regkey": randString(10),
+            },
+            success: function(data) {
+                $("#keyvalue").val("Hello world!");
+                alert('hello');
+            }
+        });
+    });
+
+    function randString(n)
+    {
+        var text = '';
+        var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+        for(var i=0; i < n; i++)
+        {
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        }
+
+        return text;
+    }
 });
+
+
+
