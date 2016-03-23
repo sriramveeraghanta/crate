@@ -25,19 +25,20 @@ $(document).ready(function() {
     });
 
     $('#regkeygen').click(function(){
-        alert('hello');
+        var key = randString(10)
         $.ajax({
             type: "POST",
-            dataType: "json",
+            dataType: "JSON",
             url: "/regkey",
             data:{
-                "regkey": randString(10),
+                'regkey': key,
             },
-            success: function(data) {
+            success: function() {
                 $("#keyvalue").val("Hello world!");
                 alert('hello');
-            }
+            },
         });
+        $("#keyvalue").text(key);
     });
 
     function randString(n)

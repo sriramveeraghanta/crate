@@ -3,7 +3,9 @@ var router = express.Router();
 var crypto = require('crypto');
 
 var Account = require('../models/account');
-var Downloads = require('../models/downloads');
+var mongoose = require('mongoose');
+var Regkeys = require('../models/regkeys');
+var Regkey = mongoose.model('Regkeys', Regkeys);
 
 router.get('/',function(req,res,next){
 	if(req.isAuthenticated()){
@@ -27,8 +29,19 @@ router.get('/',function(req,res,next){
 });
 
 router.post('/', function(req,res,next){
-	console.log(req.body);
+	console.log(req.body.regkey);
 
+	var regkey_data = {
+			regkey: req.body.regkey,
+			isUsed: false,
+	};
+	var regkey = new Regkey(regkey_data);
+	regkey.save(function(error){
+		if(error){
+			console.log(error);
+		}
+	});
+	
 });
 
 module.exports = router;
