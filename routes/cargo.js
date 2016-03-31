@@ -31,7 +31,7 @@ router.get('/',function(req,res,next){
 					}
 					data.filesinfo.push(filesinfo);
 				}
-  				//console.log(data);
+  				console.log(data);
   				res.render('cargo',data);
 			});
 		});	

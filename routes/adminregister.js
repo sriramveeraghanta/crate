@@ -8,6 +8,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/', function(req, res) {
+    
     if (req.body.regkey == 'crate12345') {
         Account.register(new Account({ 
         firstname: req.body.firstname,
