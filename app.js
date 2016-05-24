@@ -12,7 +12,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
 var register = require('./routes/register');
 var userregister = require('./routes/userregister');
 var moderatorregister = require('./routes/moderatorregister');
@@ -39,7 +38,7 @@ app.set('view engine', 'jade');
 
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', '/images/favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -59,7 +58,6 @@ app.use(compression()); //use compression
 
 //routers
 app.use('/', routes);
-app.use('/users', users);
 app.use('/register',register);
 app.use('/userregister',userregister);
 app.use('/moderatorregister',moderatorregister)

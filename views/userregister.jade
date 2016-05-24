@@ -41,3 +41,6 @@ block content
           .login-form-footer
             | Already have an account 
             a(href='/login') Login here
+            if(message)
+              p#errormsg Error: #{message}
+
